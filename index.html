@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ARTHURIA</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  background:#000;
+  color:white;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+
+/* alma azul */
+.soul{
+  position:fixed;
+  top:20px;
+  right:20px;
+  width:16px;
+  height:16px;
+  background:#3b82f6;
+  border-radius:50%;
+  box-shadow:0 0 18px #3b82f6;
+  animation:float 2.5s ease-in-out infinite;
+}
+
+@keyframes float{
+  0%{transform:translateY(0); opacity:0.6;}
+  50%{transform:translateY(10px); opacity:1;}
+  100%{transform:translateY(0); opacity:0.6;}
+}
+
+.app{
+  width:100%;
+  max-width:420px;
+  height:90vh;
+  display:flex;
+  flex-direction:column;
+  background:#0a0a0a;
+  border:1px solid #222;
+  border-radius:15px;
+  overflow:hidden;
+}
+
+.header{
+  padding:12px;
+  text-align:center;
+  background:#111;
+  font-weight:bold;
+}
+
+.chat{
+  flex:1;
+  padding:10px;
+  overflow-y:auto;
+}
+
+.msg{
+  margin:8px 0;
+  padding:8px;
+  border-radius:10px;
+  max-width:80%;
+}
+
+.user{
+  background:#2563eb;
+  margin-left:auto;
+}
+
+.bot{
+  background:#1f1f1f;
+}
+
+.input{
+  display:flex;
+  padding:10px;
+  background:#111;
+}
+
+input{
+  flex:1;
+  padding:10px;
+  border:none;
+  outline:none;
+  border-radius:10px;
+  background:#000;
+  color:white;
+}
+
+button{
+  margin-left:10px;
+  background:#3b82f6;
+  border:none;
+  color:white;
+  padding:10px;
+  border-radius:10px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="soul"></div>
+
+<div class="app">
+  <div class="header">🤖 ARTHURIA</div>
+
+  <div id="chat" class="chat"></div>
+
+  <div class="input">
+    <input id="input" placeholder="Fale com a ARTHURIA..." />
+    <button onclick="send()">Enviar</button>
+  </div>
+</div>
+
+<script>
+
+function addMsg(who,text){
+  const chat=document.getElementById("chat");
+  const div=document.createElement("div");
+  div.className="msg "+(who==="Você"?"user":"bot");
+  div.innerText=who+": "+text;
+  chat.appendChild(div);
+  chat.scrollTop=chat.scrollHeight;
+}
+
+function send(){
+  const input=document.getElementById("input");
+  let t=input.value.trim();
+  if(!t) return;
+
+  addMsg("Você",t);
+  input.value="";
+
+  setTimeout(()=>{
+    addMsg("ARTHURIA",brain(t));
+  },500);
+}
+
+function brain(t){
+  t=t.toLowerCase();
+
+  if(t.includes("oi")) return "Oi… eu estou aqui 🔵";
+  if(t.includes("quem")) return "Sou ARTHURIA, uma IA no escuro observando tudo.";
+  if(t.includes("alma")) return "A alma é azul… e ela flutua.";
+  if(t.includes("fnf")) return "Ritmo detectado 🎶";
+
+  return "Estou te ouvindo no silêncio do sistema…";
+}
+
+</script>
+
+</body>
+  </html>
