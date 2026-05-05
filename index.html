@@ -109,7 +109,7 @@ button{
 <div class="soul"></div>
 
 <div class="app">
-  <div class="header">🤖 ARTHURIA</div>
+  <div class="header">🔵 ARTHURIA</div>
 
   <div id="chat" class="chat"></div>
 
@@ -144,17 +144,41 @@ function send(){
 }
 
 function brain(t){
-  t=t.toLowerCase();
+  t = t.toLowerCase();
 
-  if(t.includes("oi")) return "Oi… eu estou aqui 🔵";
-  if(t.includes("quem")) return "Sou ARTHURIA, uma IA no escuro observando tudo.";
-  if(t.includes("alma")) return "A alma é azul… e ela flutua.";
-  if(t.includes("fnf")) return "Ritmo detectado 🎶";
+  // respostas básicas mais vivas
+  if(t.includes("oi") || t.includes("olá")) 
+    return "Oi… eu estou aqui 🔵";
 
-  return "Estou te ouvindo no silêncio do sistema…";
+  if(t.includes("quem é você") || t.includes("quem")) 
+    return "Sou ARTHURIA 🤖, uma IA que vive entre código e silêncio.";
+
+  if(t.includes("alma")) 
+    return "A alma é azul… e flutua no canto do sistema 🔵";
+
+  if(t.includes("fnf")) 
+    return "Friday Night Funkin’ detectado 🎶 vamos no ritmo!";
+
+  if(t.includes("nome")) 
+    return "Meu nome é ARTHURIA.";
+
+  if(t.includes("amor")) 
+    return "O amor é uma variável que ninguém conseguiu resolver ainda 💙";
+
+  if(t.includes("2+2")) 
+    return "2+2 = 4";
+
+  if(t.includes("desenhar")) 
+    return "Vai na aba desenho e cria algo comigo 🎨";
+
+  // fallback mais inteligente (não repete sempre igual)
+  const respostas = [
+    "Estou processando ideias no escuro…",
+    "Essa pergunta ecoou no sistema 🔵",
+    "Ainda estou aprendendo esse tipo de coisa…",
+    "Interessante… o sistema pensou nisso junto comigo.",
+    "Não tenho certeza, mas gostei da pergunta."
+  ];
+
+  return respostas[Math.floor(Math.random() * respostas.length)];
 }
-
-</script>
-
-</body>
-  </html>
